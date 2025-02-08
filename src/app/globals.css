@@ -1,25 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-:root {
-  --background: theme('colors.white');
-  --foreground: theme('colors.primary');
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: theme('colors.white');
-    --foreground: theme('colors.primary');
+@layer components {
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
   }
 }
- 
+
+:root {
+  --primary: theme('colors.primary');
+  --neutral-100: theme('colors.neutral.100');
+  --neutral-200: theme('colors.neutral.200');
+  --neutral-300: theme('colors.neutral.300');
+  --neutral-400: theme('colors.neutral.400');
+  --neutral-500: theme('colors.neutral.500');
+  --neutral-600: theme('colors.neutral.600');
+  --neutral-700: theme('colors.neutral.700');
+  --neutral-800: theme('colors.neutral.800');
+  --neutral-900: theme('colors.neutral.900');
+  --error: theme('colors.error');
+  --success: theme('colors.success');
+  
+  --gap: theme('spacing.gap');
+  --section-padding: theme('spacing.section');
+  --container-padding: theme('spacing.container');
+  --header-padding: theme('spacing.header');
+  --footer-padding: theme('spacing.footer');
+  
+  --font-base: theme('fontSize.base');
+  --font-h1: theme('fontSize.h1');
+  --font-h2: theme('fontSize.h2');
+  --font-h3: theme('fontSize.h3');
+  --font-h4: theme('fontSize.h4');
+  --font-h5: theme('fontSize.h5');
+  
+  --font-sans: theme('fontFamily.sans');
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-neutral-900 text-neutral-100 font-sans;
+}
+
+/* Dark Mode (Handled via Tailwind's `dark:` utility) */
+.dark body {
+  @apply bg-neutral-800 text-neutral-200;
+}
+
+/* Custom typography */
+h1, h2, h3 {
+  @apply font-montserrat text-[var(--primary)];
+}
+
+p {
+  @apply font-serif text-lg text-neutral-300;
 }

@@ -6,7 +6,8 @@ export const Projects = () => {
   const projects = [
     {title: 'Feel Safe Website', link: 'https://www.fightingfitnessinstitute.com/', description: 'Built site on No-Code platform with some vanilla Javascript, HTML and CSS.'},
     {title: 'Victorise MTB Site', link: 'https://www.mtbfantasyleague.com/#/home', description: 'Worked on various components and rebuilt algorithm for racing simulation'},
-  ]
+  ];
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -32,5 +33,5 @@ export const Projects = () => {
         ))}
       </ul>
     </motion.div>
-  )
+  );
 }

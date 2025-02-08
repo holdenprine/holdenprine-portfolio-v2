@@ -9,7 +9,7 @@ export const ContactForm = () => {
     whileInView={{ y: 0, opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8 }}
-    className="max-w-4xl mx-auto bg-[var(--foreground)] p-6 rounded-lg shadow-md"
+    className="max-w-4xl mx-auto bg-[var(--background)] p-6 rounded-lg shadow-md"
   >
     <h2 className="text-4xl text-white font-bold mb-4">Contact Me</h2>
     <div className="mb-4">
@@ -36,7 +36,7 @@ export const ContactForm = () => {
         placeholder="Your Message"
       />
     </div>
-    <button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+    <button className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-forest">
       Send
     </button>
   </motion.form>
