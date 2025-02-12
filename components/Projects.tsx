@@ -1,6 +1,7 @@
 'use client';
 import React from 'react'
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export const Projects = () => {
   const projects = [
@@ -16,7 +17,7 @@ export const Projects = () => {
       transition={{ duration: 0.8 }}
       className="max-w-4xl mx-auto text-center"
     >
-      <h2 className="text-4xl text-[var(--foreground)] font-bold mb-4">Projects</h2>
+      <h2 className="text-4xl text-[var(--foreground)] font-bold mb-4 pt-[100px]">Projects</h2>
       <ul className="grid md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <motion.li
@@ -31,6 +32,8 @@ export const Projects = () => {
             </a>
           </motion.li>
         ))}
+        <h2>If you'd like to see the repo for this website, check it out here:</h2>
+        <a href='https://github.com/holdenprine/holdenprine-portfolio-v2/tree/styling'>Click here</a>
       </ul>
     </motion.div>
   );
