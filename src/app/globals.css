@@ -2,10 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 @layer components {
   .font-montserrat {
     font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .space-mono {
+    font-family: 'Space-Mono',
   }
 }
 
@@ -29,6 +36,7 @@
   --header-padding: theme('spacing.header');
   --footer-padding: theme('spacing.footer');
   
+  --font-primary: 'Space Mono', monospace;
   --font-base: theme('fontSize.base');
   --font-h1: theme('fontSize.h1');
   --font-h2: theme('fontSize.h2');
@@ -37,6 +45,7 @@
   --font-h5: theme('fontSize.h5');
   
   --font-sans: theme('fontFamily.sans');
+
 }
 
 html {
@@ -44,7 +53,8 @@ html {
 }
 
 body {
-  @apply bg-neutral-900 text-neutral-100 font-sans;
+  /* @apply bg-neutral-100 text-neutral-900 font-sans; */
+  font-family: var(--font-primary);
 }
 
 /* Dark Mode (Handled via Tailwind's `dark:` utility) */
@@ -53,10 +63,7 @@ body {
 }
 
 /* Custom typography */
-h1, h2, h3 {
-  @apply font-montserrat text-[var(--primary)];
+h1, h2, h3, p {
+  font-family: var(--font-primary);
 }
 
-p {
-  @apply font-serif text-lg text-neutral-300;
-}

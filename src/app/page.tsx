@@ -17,7 +17,7 @@ export default function Home() {
         <meta name="description" content="Welcome to my personal portfolio!" />
       </Head>
 
-      <main className="bg-background text-gray-900 min-h-screen overflow-hidden">
+      <main className="text-gray-900 min-h-screen overflow-hidden">
         <Header />
         <section id="bio" className="py-16">
           <Bio />
