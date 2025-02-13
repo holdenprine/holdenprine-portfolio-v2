@@ -10,6 +10,7 @@ export const Projects = () => {
   ];
 
   return (
+    <>
     <motion.div 
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -32,9 +33,19 @@ export const Projects = () => {
             </a>
           </motion.li>
         ))}
-        <h2>If you'd like to see the repo for this website, check it out here:</h2>
-        <button onClick={'https://github.com/holdenprine/holdenprine-portfolio-v2/tree/styling'}>Click here</button>
-      </ul>
+       </ul>
     </motion.div>
+     <div className='flex flex-col items-center mt-10'>
+      <h2>Check out the repo for this site here:</h2>
+      <div className='pt-[20px]'>
+      <a
+        href='https://github.com/holdenprine/holdenprine-portfolio-v2'
+        className='px-3 py-2 rounded-md bg-gray-200 hover: bg-gray-300 transition duration-200 ease-in-out text-center'
+      >
+        Click Here
+      </a>
+      </div>
+   </div>
+   </>
   );
 }
