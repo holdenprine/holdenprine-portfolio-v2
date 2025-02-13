@@ -16,26 +16,26 @@ export const Header = () => {
       >
         {/* <h1 className="text-2xl font-bold">Holden Prine</h1> */}
         <ul className="flex space-x-4">
-          <li><Link href="#bio">Bio</Link></li>
-          <li><Link href="#tech-stack">Tech Stack</Link></li>
-          <li><Link href="#projects">Projects</Link></li>
-          <li><Link href="#contact">Contact</Link></li>
-          <li>
+          <li className="inline-flex items-center px-3 py-2 rounded-md hover:bg-gray-200 transition"><Link href="#bio">Bio</Link></li>
+          <li className="inline-flex items-center px-3 py-2 rounded-md hover:bg-gray-200 transition"><Link href="#tech-stack">Tech Stack</Link></li>
+          <li className="inline-flex items-center px-3 py-2 rounded-md hover:bg-gray-200 transition"><Link href="#projects">Projects</Link></li>
+          <li className="inline-flex items-center px-3 py-2 rounded-md hover:bg-gray-200 transition"><Link href="#contact">Contact</Link></li>
+          <li className="inline-flex items-center px-3 py-2 rounded-md hover:bg-gray-200 transition">
             <a
               href="https://www.linkedin.com/in/holdenprine/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-3xl text-[var(--headertextcolor)] hover:text-blue-600 transition-colors"
+              className="text-3xl text-[var(--headertextcolor)]"
             >
               <CiLinkedin />
             </a>
             </li>
-            <li>
+            <li className="inline-flex items-center px-3 py-2 rounded-md hover:bg-gray-200 transition">
             <a
               href="https://github.com/holdenprine" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-3xl text-[var(--headertextcolor)] hover:text-blue-600 transition-colors"
+              className="text-3xl text-[var(--headertextcolor)]"
             >
               <FiGithub />
             </a>
