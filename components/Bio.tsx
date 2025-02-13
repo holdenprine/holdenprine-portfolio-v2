@@ -4,14 +4,17 @@ import { motion } from "framer-motion";
 
 export const Bio = () => {
   return (
+    <>
+    {/* spacing for better DOM comp */}
+    <div className="pt-[30px]"></div>
     <motion.div
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="bg-neutral-500 max-w-4xl mx-auto text-center py-16 px-6 rounded-2xl shadow-lg"
+      className="bg-neutral-500 max-w-4xl mx-auto text-center py-16 px-6 rounded-2xl shadow-lg pt-[50px]"
     >
-      <h2 className="text-h1 mb-4 text-neutral-100">
+      <h2 className="text-h1 font-montserrat mb-4 text-neutral-100">
         Hello! I'm Holden Prine
       </h2>
       <p className="text-lg text-neutral-300 leading-relaxed">
@@ -22,6 +25,7 @@ export const Bio = () => {
         quality in the tools and projects I build.
       </p>
     </motion.div>
+    </>
   );
 };
 
