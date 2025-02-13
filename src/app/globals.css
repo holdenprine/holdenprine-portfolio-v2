@@ -63,10 +63,7 @@ body {
 }
 
 /* Custom typography */
-h1, h2, h3 {
-  @apply font-montserrat text-[var(--primary)];
+h1, h2, h3, p {
+  font-family: var(--font-primary);
 }
 
-p {
-  @apply font-serif text-lg text-neutral-300;
-}
