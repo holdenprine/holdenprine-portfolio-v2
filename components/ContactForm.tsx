@@ -36,7 +36,7 @@ export const ContactForm = () => {
           placeholder="Your Message"
         />
       </div>
-      <button className="bg-[var(--button-bg)] text-[var(--text-color)] px-4 py-2 rounded-lg hover:bg-[var(--button-hover)]">
+      <button className="= text-[var(--text-color)] px-4 py-2 rounded-lg hover:bg-[var(--button-hover)]">
         Send
       </button>  {/* Changed button colors */}
     </motion.form>
