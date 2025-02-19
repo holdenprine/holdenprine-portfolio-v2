@@ -17,8 +17,13 @@ export default function Home() {
         <meta name="description" content="Welcome to my personal portfolio!" />
       </Head>
 
-      <main className="text-gray-900 min-h-screen overflow-hidden">
+      <main className="text-gray-900 min-h-screen">
         <Header />
+        <div className='background bg-gray-100 min-h-screen flex justify-center items-center'>
+          {Array.from({length: 7}).map((_, i) => {
+            return <span key={i} className='block w-10 h-10 bg-blue-500 m-2 rounded-lg'/>
+          })}
+        </div>
         <section id="bio" className="py-16">
           <Bio />
         </section>
