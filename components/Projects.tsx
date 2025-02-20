@@ -16,7 +16,7 @@ export const Projects = () => {
       link: 'https://www.mtbfantasyleague.com/#/home',
       description:
         'Worked on various components and rebuilt algorithm for racing simulation',
-      image: '/static/victorise-logo.jpg',
+      image: '/static/vlogo.jpg',
     },
   ];
 
@@ -48,6 +48,7 @@ export const Projects = () => {
                 <figure>
                   <img
                     src= {project.image}
+                    className='object-fill'
                     alt="Project Card"
                   />
                 </figure>
