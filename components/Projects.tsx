@@ -18,7 +18,7 @@ export const Projects = () => {
       transition={{ duration: 0.8 }}
       className="max-w-4xl mx-auto text-center"
     >
-      <h2 className="text-4xl text-[var(--foreground)] font-bold mb-4 pt-[100px]">Projects</h2>
+      <h2 className="text-4xl text-color-white font-bold mb-4 pt-[100px]">Projects</h2>
       <ul className="grid md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <motion.li
