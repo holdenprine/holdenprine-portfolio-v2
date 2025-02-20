@@ -12,12 +12,12 @@ export const Bio = () => {
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="max-w-4xl mx-auto text-center py-16 px-6 rounded-2xl shadow-lg pt-[50px]"
+      className="bg-gray-200 max-w-4xl mx-auto text-center py-16 px-6 rounded-2xl shadow-lg pt-[50px]"
     >
-      <h2 className="text-h1 font-bold mb-4 text-neutral-100">
+      <h2 className="text-h1 text-neutral-600 font-bold mb-4 text-neutral-100">
         Hello! I'm Holden Prine
       </h2>
-      <p className="text-lg text-neutral-300 leading-relaxed">
+      <p className="text-lg text-neutral-600 leading-relaxed">
         I’m a Full Stack Developer specializing in Frontend and testing. I have
         a passion for user-first products that contribute to their given
         communities. Throughout my career, it has been my mission to be an
