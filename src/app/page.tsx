@@ -5,6 +5,7 @@ import { Bio } from "../../components/Bio";
 import { TechStack } from "../../components/TechStack";
 import { Projects } from "../../components/Projects";
 import { ContactForm } from "../../components/ContactForm";
+import NewTechStack from "../../components/NewTechStack";
 
 export default function Home() {
   return (
@@ -27,8 +28,9 @@ export default function Home() {
 
             <section id="tech-stack" className="py-16 bg-gray-100 relative z-10">
               <div className="relative z-10 flex flex-wrap gap-8 justify-center">
-                <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
-                  <TechStack />
+                <div className="w-full sm:w-5/6 lg:w-4/5 xl:w-3/4">
+                  {/* <TechStack /> */}
+                  <NewTechStack />
                 </div>
                 <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
                   <Projects />
