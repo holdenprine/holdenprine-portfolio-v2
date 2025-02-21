@@ -72,6 +72,11 @@ h1, h2, h3, p {
   font-family: var(--font-primary);
 }
 
+/* for testing p tag content */
+/* p {
+  outline: 1px solid red;
+} */
+ 
 /* Background Styling */
 .background-upper {
   /* Ensure the background image applies to full screen */
