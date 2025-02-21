@@ -1,11 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Workbench&display=swap');
 
+/* Tailwind CSS Imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Component Styles */
 @layer components {
   .font-montserrat {
     font-family: 'Montserrat', sans-serif;
@@ -18,6 +20,7 @@
   }
 }
 
+/* Define Root Variables for Colors, Spacing, and Fonts */
 :root {
   --primary: theme('colors.primary');
   --neutral-100: theme('colors.neutral.100');
@@ -49,107 +52,80 @@
   --font-sans: theme('fontFamily.sans');
 }
 
+/* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
+/* Body Styles */
 body {
   font-family: 'Workbench', sans-serif !important;
 }
 
+/* Dark Mode Styles */
 .dark body {
   @apply bg-neutral-800 text-neutral-200;
 }
 
+/* Global Heading and Paragraph Styles */
 h1, h2, h3, p {
   font-family: var(--font-primary);
 }
 
-@layer base {
-  @keyframes move {
-    100% {
-      transform: translate3d(0, 0, 1px) rotate(360deg);
-    }
-  }
+/* for testing p tag content */
+/* p {
+  outline: 1px solid red;
+} */
+ 
+/* Background Styling */
+.background-upper {
+  /* Ensure the background image applies to full screen */
+  background-image: url('/static/bg.svg'); /* Changed to /static */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Ensure full screen height */
+  width: 100%; /* Ensure full width */
+  background-repeat: no-repeat; /* Prevent tiling */
 }
 
-@layer utilities {
-  .background {
-    @apply fixed w-screen h-screen top-0 left-0 bg-[#24a9d6] overflow-hidden;
-  }
-
-  .background span {
-    @apply absolute rounded-full backface-hidden;
-    animation: move linear infinite;
-  }
-
-  .background span:nth-child(1) {
-    @apply text-[#5daae5];
-    top: 47%;
-    left: 35%;
-    animation-duration: 31s;
-    animation-delay: -19s;
-    transform-origin: -6vw 14vh;
-    box-shadow: -18vmin 0 2.79vmin currentColor;
-  }
-
-  .background span:nth-child(2) {
-    @apply text-[#adc9ff];
-    top: 66%;
-    left: 54%;
-    animation-duration: 23s;
-    animation-delay: -25s;
-    transform-origin: 10vw 24vh;
-    box-shadow: -18vmin 0 2.34vmin currentColor;
-  }
-
-  .background span:nth-child(3) {
-    @apply text-[#5daae5];
-    top: 6%;
-    left: 93%;
-    animation-duration: 18s;
-    animation-delay: -4s;
-    transform-origin: -9vw -9vh;
-    box-shadow: 18vmin 0 2.83vmin currentColor;
-  }
-
-  .background span:nth-child(4) {
-    @apply text-[#5daae5];
-    top: 8%;
-    left: 79%;
-    animation-duration: 22s;
-    animation-delay: -21s;
-    transform-origin: 18vw -1vh;
-    box-shadow: -18vmin 0 2.30vmin currentColor;
-  }
-
-  .background span:nth-child(5) {
-    @apply text-[#3c7786];
-    top: 71%;
-    left: 82%;
-    animation-duration: 11s;
-    animation-delay: -5s;
-    transform-origin: 14vw 25vh;
-    box-shadow: 18vmin 0 2.28vmin currentColor;
-  }
-
-  .background span:nth-child(6) {
-    @apply text-[#adc9ff];
-    top: 50%;
-    left: 3%;
-    animation-duration: 21s;
-    animation-delay: -25s;
-    transform-origin: 15vw -7vh;
-    box-shadow: -18vmin 0 3.02vmin currentColor;
-  }
-
-  .background span:nth-child(7) {
-    @apply text-[#5daae5];
-    top: 70%;
-    left: 33%;
-    animation-duration: 12s;
-    animation-delay: -21s;
-    transform-origin: 10vw 21vh;
-    box-shadow: 18vmin 0 2.44vmin currentColor;
-  }
+.background-lower {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0b80a1; /* Background color */
+  z-index: -10;
+  overflow: hidden;
 }
+
+.background-lower::after {
+  content: "";
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png");
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 300%;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -10;
+  animation: animateGrain 8s steps(10) infinite;
+}
+
+@keyframes animateGrain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, -10%); }
+  30% { transform: translate(-5%, -5%); }
+  40% { transform: translate(-10%, -10%); }
+  50% { transform: translate(-5%, -5%); }
+  60% { transform: translate(-10%, -10%); }
+  70% { transform: translate(-5%, -5%); }
+  80% { transform: translate(-10%, -10%); }
+  90% { transform: translate(-5%, -5%); }
+}
+
+
+
+
