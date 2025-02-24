@@ -1,56 +1,83 @@
-import React from 'react';
-import { FaReact } from "react-icons/fa";
-import { FaAngular } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
-import { SiJavascript } from "react-icons/si";
-import { BsFiletypeScss } from "react-icons/bs";
-import { SiTailwindcss } from "react-icons/si";
-import { FaBootstrap } from "react-icons/fa";
-import { SiDaisyui } from "react-icons/si";
-import { FaNodeJs } from "react-icons/fa";
-import { SiExpress } from "react-icons/si";
-import { SiRubyonrails } from "react-icons/si";
-import { FaPython } from "react-icons/fa";
-import { FaJava } from "react-icons/fa";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { SiMongodb } from "react-icons/si";
-import { FaAws } from "react-icons/fa";
-import { SiJest } from "react-icons/si";
-import { SiCypress } from "react-icons/si";
-import { FaGithubSquare } from "react-icons/fa";
-import { FaBitbucket } from "react-icons/fa";
-import { FaAtlassian } from "react-icons/fa";
-import { SiHeroku } from "react-icons/si";
-import { FaDocker } from "react-icons/fa";
-import { TiVendorMicrosoft } from "react-icons/ti";
+import React, { useState, useEffect } from 'react';
+import { IconType } from 'react-icons';
 
-// Variables for icon components
-const ReactIcon: React.FC = FaReact as React.FC;
-const AngularIcon: React.FC = FaAngular as React.FC;
-const TsIcon: React.FC = SiTypescript as React.FC;
-const JsIcon: React.FC = SiJavascript as React.FC;
-const ScssIcon: React.FC = BsFiletypeScss as React.FC;
-const TailwindIcon: React.FC = SiTailwindcss as React.FC;
-const BootstrapIcon: React.FC = FaBootstrap as React.FC;
-const DaisyIcon: React.FC = SiDaisyui as React.FC;
-const NodeIcon: React.FC = FaNodeJs as React.FC;
-const ExpressIcon: React.FC = SiExpress as React.FC;
-const RubyOnRailsIcon: React.FC = SiRubyonrails as React.FC;
-const PyIcon: React.FC = FaPython as React.FC;
-const JavaIcon: React.FC = FaJava as React.FC;
-const SQLIcon: React.FC = BiLogoPostgresql as React.FC;
-const MongoIcon: React.FC = SiMongodb as React.FC;
-const AWSIcon: React.FC = FaAws as React.FC;
-const JestIcon: React.FC = SiJest as React.FC;
-const CypressIcon: React.FC = SiCypress as React.FC;
-const GitIcon: React.FC = FaGithubSquare as React.FC;
-const BitbucketIcon: React.FC = FaBitbucket as React.FC;
-const AtlassianIcon: React.FC = FaAtlassian as React.FC;
-const HerokuIcon: React.FC = SiHeroku as React.FC;
-const DockerIcon: React.FC = FaDocker as React.FC;
-const PlaywrightIcon: React.FC = TiVendorMicrosoft as React.FC;
+type IconModule = {
+  [key: string]: IconType;
+  default?: unknown;
+};
+
+const loadIcon = async (iconName: string): Promise<IconType | null> => {
+  try {
+    // extract prefixes of modules
+    const prefix = iconName.slice(0,2);
+    // bypasses some typing contraints for Promise -> throws a linter error but no greater issues in implementation -> still runs faster
+    const moduleMap: Record<string, () => Promise<IconModule>> = {
+      Fa: () => import('react-icons/fa'),
+      Si: () => import('react-icons/si'),
+      Bs: () => import('react-icons/bs'),
+      Bi: () => import('react-icons/bi'),
+      Ti: () => import('react-icons/ti'),
+    }
+
+    const moduleLoader = moduleMap[prefix];
+    if(!moduleLoader) {
+      console.warn(`No module found for prefix: ${prefix}`);
+      return null;
+    }
+
+    const iconModule = (await moduleLoader()) as IconModule;
+    return iconModule[iconName] || null;
+  } catch(error) {
+    console.error(`Error loading icon ${iconName}`, error);
+    return null;
+  }
+};
 
 const NewTechStack: React.FC = () => {
+  const [icons, setIcons] = useState<Record<string, IconType | null>>({});
+
+  useEffect(() => {
+    const loadIcons = async () => {
+      const iconNames = [
+        'FaReact',
+        'FaAngular',
+        'SiTypescript',
+        'SiJavascript',
+        'BsFiletypeScss',
+        'SiTailwindcss',
+        'FaBootstrap',
+        'SiDaisyui',
+        'FaNodeJs',
+        'SiExpress',
+        'SiRubyonrails',
+        'FaPython',
+        'FaJava',
+        'BiLogoPostgresql',
+        'SiMongodb',
+        'FaAws',
+        'SiJest',
+        'SiCypress',
+        'FaGithubSquare',
+        'FaBitbucket',
+        'FaAtlassian',
+        'SiHeroku',
+        'FaDocker',
+        'TiVendorMicrosoft',
+      ];
+
+      const loadedIcons: Record<string, IconType | null> = {};
+
+      for (const icon of iconNames) {
+        const iconComponent = await loadIcon(icon);
+        loadedIcons[icon] = iconComponent;
+      }
+
+      setIcons(loadedIcons);
+    };
+
+    loadIcons();
+  }, []);
+
   return (
     <>
       <h2 className="text-center text-4xl text-color-white font-bold mb-4 pt-[100px] p-4">
@@ -62,15 +89,30 @@ const NewTechStack: React.FC = () => {
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">Frontend</div>
           <div className="collapse-content flex flex-wrap items-center gap-4">
-            <p>React <ReactIcon /></p>
-            <p>React-Native <ReactIcon /></p>
-            <p>Angular <AngularIcon /></p>
-            <p>Typescript <TsIcon /></p>
-            <p>Next.js <JsIcon /></p>
-            <p>SCSS <ScssIcon /></p>
-            <p>TailwindCSS <TailwindIcon /></p>
-            <p>Bootstrap <BootstrapIcon /></p>
-            <p>DaisyUI <DaisyIcon /></p>
+            <p>
+              React {icons.FaReact ? <React.Fragment>{<icons.FaReact />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Angular {icons.FaAngular ? <React.Fragment>{<icons.FaAngular />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Typescript {icons.SiTypescript ? <React.Fragment>{<icons.SiTypescript />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Javascript {icons.SiJavascript ? <React.Fragment>{<icons.SiJavascript />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              SCSS {icons.BsFiletypeScss ? <React.Fragment>{<icons.BsFiletypeScss />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              TailwindCSS {icons.SiTailwindcss ? <React.Fragment>{<icons.SiTailwindcss />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Bootstrap {icons.FaBootstrap ? <React.Fragment>{<icons.FaBootstrap />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              DaisyUI {icons.SiDaisyui ? <React.Fragment>{<icons.SiDaisyui />}</React.Fragment> : <span>Loading...</span>}
+            </p>
           </div>
         </div>
 
@@ -79,14 +121,30 @@ const NewTechStack: React.FC = () => {
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">Backend</div>
           <div className="collapse-content flex flex-wrap items-center gap-4">
-            <p>Node <NodeIcon /></p>
-            <p>Express.js <ExpressIcon /></p>
-            <p>Ruby on Rails <RubyOnRailsIcon /></p>
-            <p>Python <PyIcon /></p>
-            <p>Java <JavaIcon /></p>
-            <p>postgreSQL <SQLIcon /></p>
-            <p>MongoDB <MongoIcon /></p>
-            <p>AWS <AWSIcon /></p>
+            <p>
+              Node {icons.FaNodeJs ? <React.Fragment>{<icons.FaNodeJs />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Express.js {icons.SiExpress ? <React.Fragment>{<icons.SiExpress />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Ruby on Rails {icons.SiRubyonrails ? <React.Fragment>{<icons.SiRubyonrails />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Python {icons.FaPython ? <React.Fragment>{<icons.FaPython />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Java {icons.FaJava ? <React.Fragment>{<icons.FaJava />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              PostgreSQL {icons.BiLogoPostgresql ? <React.Fragment>{<icons.BiLogoPostgresql />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              MongoDB {icons.SiMongodb ? <React.Fragment>{<icons.SiMongodb />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              AWS {icons.FaAws ? <React.Fragment>{<icons.FaAws />}</React.Fragment> : <span>Loading...</span>}
+            </p>
           </div>
         </div>
 
@@ -95,11 +153,21 @@ const NewTechStack: React.FC = () => {
           <input type="checkbox" />
           <div className="collapse-title text-xl font-medium">Testing</div>
           <div className="collapse-content flex flex-wrap items-center gap-4">
-            <p>Jest <JestIcon /></p>
-            <p>React-Testing-Library <ReactIcon /></p>
-            <p>Active Record <RubyOnRailsIcon /></p>
-            <p>Cypress <CypressIcon /></p>
-            <p>Playwright <PlaywrightIcon /></p>
+            <p>
+              Jest {icons.SiJest ? <React.Fragment>{<icons.SiJest />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              React-Testing-Library {icons.FaReact ? <React.Fragment>{<icons.FaReact />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Active Record {icons.SiRubyonrails ? <React.Fragment>{<icons.SiRubyonrails />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Cypress {icons.SiCypress ? <React.Fragment>{<icons.SiCypress />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Playwright {icons.TiVendorMicrosoft ? <React.Fragment>{<icons.TiVendorMicrosoft />}</React.Fragment> : <span>Loading...</span>}
+            </p>
           </div>
         </div>
 
@@ -110,11 +178,21 @@ const NewTechStack: React.FC = () => {
             CI/CD and Version Control
           </div>
           <div className="collapse-content flex flex-wrap items-center gap-4">
-            <p>Git <GitIcon /></p>
-            <p>Bitbucket <BitbucketIcon /></p>
-            <p>Atlassian Suite <AtlassianIcon /></p>
-            <p>Heroku <HerokuIcon /></p>
-            <p>Docker <DockerIcon /></p>
+            <p>
+              Git {icons.FaGithubSquare ? <React.Fragment>{<icons.FaGithubSquare />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Bitbucket {icons.FaBitbucket ? <React.Fragment>{<icons.FaBitbucket />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Atlassian Suite {icons.FaAtlassian ? <React.Fragment>{<icons.FaAtlassian />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Heroku {icons.SiHeroku ? <React.Fragment>{<icons.SiHeroku />}</React.Fragment> : <span>Loading...</span>}
+            </p>
+            <p>
+              Docker {icons.FaDocker ? <React.Fragment>{<icons.FaDocker />}</React.Fragment> : <span>Loading...</span>}
+            </p>
           </div>
         </div>
       </div>
