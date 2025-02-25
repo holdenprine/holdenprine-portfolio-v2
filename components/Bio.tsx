@@ -15,10 +15,10 @@ export const Bio = () => {
       className="bg-gray-200 max-w-4xl mx-auto text-center py-16 px-6 rounded-2xl shadow-lg pt-[50px]"
     >
       <h2 className="text-h1 text-neutral-600 font-bold mb-4 text-neutral-100">
-        Hello! I'm Holden Prine
+        Hello! I&apos;m Holden Prine
       </h2>
       <p className="text-lg text-neutral-600 leading-relaxed">
-        I’m a Full Stack Developer specializing in Frontend and testing. I have
+        I&apos;m a Full Stack Developer specializing in Frontend and testing. I have
         a passion for user-first products that contribute to their given
         communities. Throughout my career, it has been my mission to be an
         integral part of the communities I serve, ensuring excellence and

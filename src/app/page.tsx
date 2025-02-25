@@ -2,7 +2,6 @@
 import Head from "next/head";
 import { Header } from "../../components/Header";
 import { Bio } from "../../components/Bio";
-import { TechStack } from "../../components/TechStack";
 import { Projects } from "../../components/Projects";
 import { ContactForm } from "../../components/ContactForm";
 import NewTechStack from "../../components/NewTechStack";
