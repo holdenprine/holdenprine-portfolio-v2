@@ -19,8 +19,8 @@ The site showcases my projects, experience, and skills while delivering a seamle
 
 - **Framework:** Next.js  
 - **Language:** TypeScript  
-- **Styling:** Tailwind CSS  
-- **Animations:** Motion Library (Framer Motion)  
+- **Styling:** Tailwind CSS, DaisyUI
+- **Animations:** Motion (Framer Motion)  
 
 ---
 
@@ -56,7 +56,7 @@ bash
 Copy
 Edit
 /components   # Reusable React components  
-/pages        # Next.js pages  
+/src          # Next.js pages  
 /public       # Static files (images, fonts, etc.)  
 /styles       # Tailwind CSS configuration and global styles  
 📜 License

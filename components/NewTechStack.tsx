@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { IconType } from 'react-icons';
 
-type IconModule = {
-  [key: string]: IconType;
+type IconModule = Record<string, IconType> & {
   default?: unknown;
 };
 
