@@ -73,9 +73,9 @@ h1, h2, h3, p {
 }
 
 /* for testing p tag content */
-/* p {
+div {
   outline: 1px solid red;
-} */
+}
  
 /* Background Styling */
 .background-upper {
@@ -90,7 +90,7 @@ h1, h2, h3, p {
 
 .background-lower {
   position: absolute;
-  top: 0;
+  top: 30;
   left: 0;
   width: 100%;
   height: 100%;
