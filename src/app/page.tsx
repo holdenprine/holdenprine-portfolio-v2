@@ -1,5 +1,6 @@
 "use client";
 import Head from "next/head";
+import "@/app/globals.css"
 import { Header } from "../../components/Header";
 import { Bio } from "../../components/Bio";
 import { Projects } from "../../components/Projects";
@@ -19,16 +20,15 @@ export default function Home() {
           <section id="bio" className="py-16">
             <Bio />
           </section>
-
+          
+          
           {/* Background with color and film grain effect wrapping multiple sections */}
-          <div className="relative">
+          
             {/* ✅ Background grain layer fixed here */}
-            <div className="background-lower absolute inset-0 -z-10"></div>
-
+            <div className="background-lower"></div>
             <section id="tech-stack" className="py-16 bg-gray-100 relative z-10">
               <div className="relative z-10 flex flex-wrap gap-8 justify-center">
-                <div className="w-full sm:w-5/6 lg:w-4/5 xl:w-3/4">
-                  {/* <TechStack /> */}
+                <div className="sm:w-5/6 lg:w-4/5 xl:w-3/4 mx-auto">
                   <NewTechStack />
                 </div>
                 <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
@@ -36,13 +36,13 @@ export default function Home() {
                 </div>
               </div>
             </section>
+            
 
             {/* Contact Form included within the background-lower effect */}
             <section id="contact" className="py-16 bg-gray-100 relative z-10">
               <ContactForm />
             </section>
           </div>
-        </div>
       </main>
     </>
   );

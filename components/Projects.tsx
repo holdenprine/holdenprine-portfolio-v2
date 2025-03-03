@@ -19,7 +19,22 @@ export const Projects = () => {
         'Worked on various components and rebuilt algorithm for racing simulation',
       image: '/static/vlogo.jpg',
     },
+    {
+      title: 'GearWatch Weather App',
+      link: 'https://github.com/holdenprine/GearWatchWeatherApp',
+      description: 'A weather app built to suggest how best to handle music gear in the given conditions - Will update when finished! For now check out the repo here!',
+      image: '/static/GearWatchTemp.jpeg'
+    },
+    {
+      title: 'Müd Müzik',
+      link: 'https://github.com/holdenprine/mood-music',
+      description: 'An end of bootcamp project showcasing full stack development capabilities through building a music curation app. Check the repo out below!',
+      image: '/static/MoodMusic.jpeg'
+    }
   ];
+
+
+    // use an onClick for repo nav and update motion div to display text on hover
 
   return (
     <>
@@ -52,7 +67,7 @@ export const Projects = () => {
                     alt="Project Card"
                     width={400}
                     height={250}
-                    className="object-cover rounded-t-lg"
+                    className="object-cover h-[250px] w-full rounded-t-lg"
                     priority
                   />
                 </figure>

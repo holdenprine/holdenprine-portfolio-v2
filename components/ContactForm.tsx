@@ -7,9 +7,7 @@ export const ContactForm = () => {
   const [status, setStatus] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -18,19 +16,16 @@ export const ContactForm = () => {
     setIsSubmitting(true);
     setStatus(null);
 
-    const endpoint = '/api';
-    console.log(`sending request to ${endpoint}`);
+    const formDataObj = new FormData(e.currentTarget);
     
-
     try {
-      const response = await fetch( endpoint, {
+      const response = await fetch('https://formspree.io/f/xrbenywj', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: formDataObj,
+        headers: { Accept: 'application/json' },
       });
 
-      const result = await response.json();
-      if (result.success) {
+      if (response.ok) {
         setStatus('✅ Message Sent Successfully!');
         setFormData({ name: '', email: '', message: '' });
       } else {
