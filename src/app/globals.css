@@ -62,11 +62,6 @@ body {
   font-family: 'Workbench', sans-serif !important;
 }
 
-/* Dark Mode Styles */
-/* .dark body {
-  @apply bg-neutral-800 text-neutral-200;
-} */
-
 /* Global Heading and Paragraph Styles */
 h1, h2, h3, p {
   font-family: var(--font-primary);

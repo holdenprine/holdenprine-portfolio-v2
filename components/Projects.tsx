@@ -62,11 +62,6 @@ export const Projects = () => {
             </a> */}
               <div className="card card-compact bg-base-100 w-full shadow-xl">
                 <figure>
-                  {/* <img
-                    src= {project.image}
-                    className='object-fill'
-                    alt="Project Card"
-                  /> */}
                   <Image 
                     src={project.image}
                     alt="Project Card"
