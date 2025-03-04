@@ -76,7 +76,7 @@ export const Projects = () => {
         </ul>
       </motion.div>
       <div className="flex flex-col items-center mt-10">
-        <h2>Check out this portfolio's repo here:</h2>
+        <h2>Check out this portfolio&apos;s repo here:</h2>
         <div className="pt-[20px]">
           <a
             href="https://github.com/holdenprine/holdenprine-portfolio-v2"
