@@ -31,10 +31,12 @@ export default function Home() {
                 <div className="sm:w-5/6 lg:w-4/5 xl:w-3/4 mx-auto">
                   <NewTechStack />
                 </div>
-                <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+              </div>
+            </section>
+            <section id="projects">
+             <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
                   <Projects />
                 </div>
-              </div>
             </section>
             
 

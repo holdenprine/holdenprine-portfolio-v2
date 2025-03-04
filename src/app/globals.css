@@ -67,16 +67,6 @@ html {
 body {
   font-family: 'Workbench', sans-serif !important;
 }
-
-/* Global Heading and Paragraph Styles */
-/* h1, h2, h3, p {
-  font-family: var(--font-primary);
-} */
-
-/* for testing tag content */
-/* div {
-  outline: 1px solid red;
-} */
  
 /* Background Styling */
 .background-upper {
