@@ -20,10 +20,6 @@ export default function Home() {
           <section id="bio" className="py-16">
             <Bio />
           </section>
-          
-          
-          {/* Background with color and film grain effect wrapping multiple sections */}
-          
             {/* ✅ Background grain layer fixed here */}
             <div className="background-lower"></div>
             <section id="tech-stack" className="py-16 bg-gray-100 relative z-10">
@@ -37,10 +33,7 @@ export default function Home() {
              <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
                   <Projects />
                 </div>
-            </section>
-            
-
-            {/* Contact Form included within the background-lower effect */}
+            </section>            
             <section id="contact" className="py-16 bg-gray-100 relative z-10">
               <ContactForm />
             </section>

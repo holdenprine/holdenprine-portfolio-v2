@@ -33,9 +33,6 @@ export const Projects = () => {
     }
   ];
 
-
-    // use an onClick for repo nav and update motion div to display text on hover
-
   return (
     <>
       <motion.div
@@ -55,11 +52,6 @@ export const Projects = () => {
               whileHover={{ scale: 1.05 }}
               className="bg-[var(--foreground)] text-black p-6 rounded-lg"
             >
-              {/* <h3 className="text-2xl font-semibold">{project.title}</h3>
-            <p className="text-white-700">{project.description}</p>
-            <a href={project.link} className="text-gray-500 hover:underline">
-              View Project
-            </a> */}
               <div className="card card-compact bg-base-100 w-full shadow-xl">
                 <figure>
                   <Image 
