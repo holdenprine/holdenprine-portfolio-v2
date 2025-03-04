@@ -20,6 +20,12 @@
   }
 }
 
+@layer base {
+  h1, h2, h3, p {
+    font-family: var(--font-primary);
+  }
+}
+
 /* Define Root Variables for Colors, Spacing, and Fonts */
 :root {
   --primary: theme('colors.primary');
@@ -63,9 +69,9 @@ body {
 }
 
 /* Global Heading and Paragraph Styles */
-h1, h2, h3, p {
+/* h1, h2, h3, p {
   font-family: var(--font-primary);
-}
+} */
 
 /* for testing tag content */
 /* div {
@@ -74,13 +80,22 @@ h1, h2, h3, p {
  
 /* Background Styling */
 .background-upper {
-  /* Ensure the background image applies to full screen */
-  background-image: url('/static/bg.svg'); /* Changed to /static */
+  background-image: url('/static/bg.svg');
   background-size: cover;
-  background-position: center;
-  height: 100vh; /* Ensure full screen height */
-  width: 100%; /* Ensure full width */
-  background-repeat: no-repeat; /* Prevent tiling */
+  background-position: top center;
+  height: 100vh;
+  width: 100%; 
+  background-repeat: no-repeat;
+}
+
+/* adjust for mobile if needed */
+@media (max-width: 768px) {
+  .background-upper {
+    background-size: contain;
+    min-height: 100vh;
+    height: auto;
+    padding-top: 3rem;
+  }
 }
 
 .background-lower {
@@ -88,10 +103,41 @@ h1, h2, h3, p {
   top: 100vh;
   left: 0;
   width: 100%;
-  height: 285vh;
-  background-color: #0b80a1; /* Background color */
+  min-height: 285vh;
+  background-color: #0b80a1; 
   z-index: -10;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .background-lower {
+    min-height: 450vh;
+  }
+}
+
+/* typography adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: var(--font-h3);
+  }
+  h2 {
+    font-size: var(--font-h4);
+  }
+  p {
+    font-size: var(--font-base);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 .background-lower::after {
@@ -120,7 +166,3 @@ h1, h2, h3, p {
   80% { transform: translate(-10%, -10%); }
   90% { transform: translate(-5%, -5%); }
 }
-
-
-
-
