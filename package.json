@@ -14,7 +14,7 @@
     "@sendgrid/mail": "^8.1.4",
     "autoprefixer": "^10.4.20",
     "motion": "^12.0.6",
-    "next": "15.1.6",
+    "next": "^15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0"
