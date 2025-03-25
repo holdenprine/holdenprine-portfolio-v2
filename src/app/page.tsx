@@ -12,6 +12,7 @@ export default function Home() {
     <>
       <Head>
         <title>Holden Prines Web Development Portfolio</title>
+
         {/* <meta name="description" content="Welcome to my personal portfolio!" /> */}
         <meta property="og:title"  content="Holden Prine: Full Stack Developer"/>
         <meta property="og:description" content="I&apos;m a Full Stack Developer specializing in Frontend and testing. I have
@@ -23,6 +24,8 @@ export default function Home() {
         <meta property="og:image:width" content="1200"/>
         <meta property="og:image:height" content="630"/>
         <meta property="og:type" content="website"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
       </Head>
       <main className="text-gray-900 min-h-screen">
         <div className="background-upper relative pt-24">
