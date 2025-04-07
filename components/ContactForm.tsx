@@ -47,7 +47,7 @@ export const ContactForm = () => {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto bg-[var(--background)] p-6 rounded-lg shadow-md"
+        className="bg-gray-200 max-w-4xl mx-auto py-16 px-6 rounded-2xl shadow-lg pt-[50px]"
       >
         <h2 className="text-4xl text-[var(--text-color)] font-bold mb-4">
           Contact Me
@@ -98,6 +98,8 @@ export const ContactForm = () => {
           />
         </div>
 
+        <div className="mt-6">
+          <div className="bg-gray-400 p-4 rounded-xl shadow-md inline-block px-4 py-2">
         <button
           type="submit"
           disabled={isSubmitting}
@@ -107,6 +109,8 @@ export const ContactForm = () => {
         >
           {isSubmitting ? 'Sending...' : 'Send'}
         </button>
+        </div>
+        </div>
       </motion.form>
 
       {status && (
