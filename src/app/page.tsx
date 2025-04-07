@@ -34,8 +34,10 @@ export default function Home() {
                   <Projects />
                 </div>
             </section>            
-            <section id="contact" className="py-16 bg-gray-100 relative z-10">
-              <ContactForm />
+            <section id="contact" className="py-16 min-h-screen relative z-10">
+              <div className="contact-bg-gradient relative z-20 p-8 shadow-lg min-h-[400px] border-4 border-red-400">
+                <ContactForm />
+              </div>
             </section>
           </div>
       </main>
