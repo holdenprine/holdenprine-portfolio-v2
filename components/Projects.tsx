@@ -67,7 +67,7 @@ export const Projects = () => {
                   <h2 className="card-title">{project.title}</h2>
                   <p className="text-left">{project.description}</p>
                   <div className="card-actions justify-end">
-                    <a href={project.link} className='btn btn-primary hover:bg-gray-300 transition duration-200 ease-in-out text-center'>Check It Out</a>
+                    <a href={project.link} className='btn btn-primary bg-[#0b80a1] border-none hover:bg-gray-100 transition duration-200 ease-in-out text-center'>Check It Out</a>
                   </div>
                 </div>
               </div>
