@@ -20,8 +20,10 @@ export default function Home() {
           <section id="bio" className="py-16">
             <Bio />
           </section>
+          </div>
             {/* ✅ Background grain layer fixed here */}
-            <div className="background-lower"></div>
+            {/* VERY BUGGED */}
+            {/* <div className="background-lower"></div> */}
             <section id="tech-stack" className="py-16 bg-gray-100 relative z-10">
               <div className="relative z-10 flex flex-wrap gap-8 justify-center">
                 <div className="sm:w-5/6 lg:w-4/5 xl:w-3/4 mx-auto">
@@ -33,11 +35,12 @@ export default function Home() {
              <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
                   <Projects />
                 </div>
-            </section>            
-            <section id="contact" className="py-16 min-h-screen relative z-10">
-              <div className="contact-bg-gradient relative z-20 p-8 shadow-lg min-h-[400px] border-4 border-red-400">
-                <ContactForm />
-              </div>
+            </section>
+            <div className="pt-[30px]"></div>
+            <div className="contact-bg-gradient relative z-20">            
+            <section id="contact" className="py-16 min-h-screen relative z-10"> 
+            <div className="pt-[30px]"></div>
+                <ContactForm /> 
             </section>
           </div>
       </main>
