@@ -85,7 +85,7 @@ export const Projects = () => {
             Click Here
           </a>
         </div>
-      </div>
+      </div> 
     </>
   );
 };
