@@ -61,11 +61,13 @@
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 /* Body Styles */
 body {
   font-family: 'Workbench', sans-serif !important;
+  height: 100%;
 }
  
 /* Background Styling */
@@ -89,12 +91,13 @@ body {
 }
 
 .background-lower {
-  position: relative;
+  position: absolute;
   left: 0;
   width: 100%;
   background-color: #0b80a1; 
   z-index: -10;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .contact-bg-gradient {
@@ -144,6 +147,7 @@ body {
   pointer-events: none;
   z-index: -1;
   animation: animateGrain 8s steps(10) infinite;
+  pointer-events: none;
 }
 
 @keyframes animateGrain {

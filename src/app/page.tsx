@@ -36,7 +36,9 @@ export default function Home() {
           </div>
             {/* ✅ Background grain layer fixed here */}
             {/* VERY BUGGED */}
-            <div className="background-lower">
+
+            <div className="relative">
+              <div className="background-lower absolute inset-0 -z-10"/>
             <section id="tech-stack" className="py-16 bg-gray-100 relative z-10">
               <div className="relative z-10 flex flex-wrap gap-8 justify-center">
                 <div className="sm:w-5/6 lg:w-4/5 xl:w-3/4 mx-auto">
