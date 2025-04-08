@@ -89,29 +89,26 @@ body {
 }
 
 /* ORIGINAL STYLING - BUGGED */
-/* .background-lower {
-  position: absolute;
-  top: 100vh;
+.background-lower {
+  position: relative;
   left: 0;
   width: 100%;
-  min-height: 285vh;
   background-color: #0b80a1; 
   z-index: -10;
   overflow: hidden;
-} */
+}
 
-.background-lower {
+/* .background-lower {
   position: relative;
   top: 100vh;
   left: 0;
   width: 100%;
   min-height: 250vh;
-  /* height: 100vh; */
   background-color: #0b80a1;
   z-index: -10;
   overflow: hidden;
   animation: animateGrain 8s steps(10) infinite;
-}
+} */
 
 .contact-bg-gradient {
   background: linear-gradient(to top, #ffffff, #0b80a1);
