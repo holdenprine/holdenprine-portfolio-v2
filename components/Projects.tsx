@@ -6,6 +6,12 @@ import { motion } from 'framer-motion';
 export const Projects = () => {
   const projects = [
     {
+      title: 'HaloboyOfficial Website',
+      link: 'https://haloboyofficial.com/',
+      description: 'A single page, interactive webapp built to promote content and music for the artist Halo Boy.',
+      image: '/static/GearWatchTemp.jpeg'
+    },
+    {
       title: 'Feel Safe Website',
       link: 'https://www.fightingfitnessinstitute.com/',
       description:
@@ -18,12 +24,6 @@ export const Projects = () => {
       description:
         'Worked on various components and rebuilt algorithm for racing simulation',
       image: '/static/vlogo.jpg',
-    },
-    {
-      title: 'GearWatch Weather App',
-      link: 'https://github.com/holdenprine/GearWatchWeatherApp',
-      description: 'A weather app built to suggest how best to handle music gear in the given conditions - Will update when finished! For now check out the repo here!',
-      image: '/static/GearWatchTemp.jpeg'
     },
     {
       title: 'Müd Müzik',
