@@ -44,7 +44,13 @@ const PROJECTS: Project[] = [
   },
 ];
 
-function ProjectCard({ project, imagePriority }: { project: Project; imagePriority: boolean }) {
+function ProjectCard({
+  project,
+  imagePriority,
+}: {
+  project: Project;
+  imagePriority: boolean;
+}) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
