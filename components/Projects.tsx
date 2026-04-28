@@ -1,38 +1,152 @@
 'use client';
-import React from 'react';
+
+import React, { useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-export const Projects = () => {
-  const projects = [
-    {
-      title: 'Feel Safe Website',
-      link: 'https://www.fightingfitnessinstitute.com/',
-      description:
-        'Built site on No-Code platform with some vanilla Javascript, HTML and CSS.',
-      image: '/static/Title.jpeg',
-    },
-    {
-      title: 'Victorise MTB Site',
-      link: 'https://www.mtbfantasyleague.com/#/home',
-      description:
-        'Worked on various components and rebuilt algorithm for racing simulation',
-      image: '/static/vlogo.jpg',
-    },
-    {
-      title: 'GearWatch Weather App',
-      link: 'https://github.com/holdenprine/GearWatchWeatherApp',
-      description: 'A weather app built to suggest how best to handle music gear in the given conditions - Will update when finished! For now check out the repo here!',
-      image: '/static/GearWatchTemp.jpeg'
-    },
-    {
-      title: 'Müd Müzik',
-      link: 'https://github.com/holdenprine/mood-music',
-      description: 'An end of bootcamp project showcasing full stack development capabilities through building a music curation app. Check the repo out below!',
-      image: '/static/MoodMusic.jpeg'
-    }
-  ];
+const MAX_TILT_DEG = 9;
 
+type Project = {
+  title: string;
+  link: string;
+  description: string;
+  image: string;
+};
+
+const PROJECTS: Project[] = [
+  {
+    title: 'HaloboyOfficial Website',
+    link: 'https://haloboyofficial.com/',
+    description:
+      'A single page, interactive webapp built to promote content and music for the artist Halo Boy.',
+    image: '/static/GearWatchTemp.jpeg',
+  },
+  {
+    title: 'Feel Safe Website',
+    link: 'https://www.fightingfitnessinstitute.com/',
+    description:
+      'Built site on No-Code platform with some vanilla Javascript, HTML and CSS.',
+    image: '/static/Title.jpeg',
+  },
+  {
+    title: 'Victorise MTB Site',
+    link: 'https://www.mtbfantasyleague.com/#/home',
+    description:
+      'Worked on various components and rebuilt algorithm for racing simulation',
+    image: '/static/vlogo.jpg',
+  },
+  {
+    title: 'Müd Müzik',
+    link: 'https://github.com/holdenprine/mood-music',
+    description:
+      'An end of bootcamp project showcasing full stack development capabilities through building a music curation app. Check the repo out below!',
+    image: '/static/MoodMusic.jpeg',
+  },
+];
+
+function ProjectCard({
+  project,
+  imagePriority,
+}: {
+  project: Project;
+  imagePriority: boolean;
+}) {
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    let disposed = false;
+    let ctx: gsap.Context | undefined;
+    let removeTiltListeners: (() => void) | undefined;
+
+    void (async () => {
+      const { gsap } = await import('gsap');
+      if (disposed) return;
+
+      const root = rootRef.current;
+      if (!root) return;
+
+      ctx = gsap.context(() => {
+        gsap.set(root, {
+          transformPerspective: 1000,
+          transformOrigin: 'center center',
+        });
+
+        const rotateXTo = gsap.quickTo(root, 'rotationX', {
+          duration: 0.65,
+          ease: 'power3.out',
+        });
+        const rotateYTo = gsap.quickTo(root, 'rotationY', {
+          duration: 0.65,
+          ease: 'power3.out',
+        });
+
+        const onMove = (e: PointerEvent) => {
+          if (e.pointerType === 'touch') return;
+
+          const r = root.getBoundingClientRect();
+          const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+          const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+
+          rotateYTo(nx * MAX_TILT_DEG);
+          rotateXTo(-ny * MAX_TILT_DEG);
+        };
+
+        const onLeave = () => {
+          rotateXTo(0);
+          rotateYTo(0);
+        };
+
+        root.addEventListener('pointermove', onMove);
+        root.addEventListener('pointerleave', onLeave);
+
+        removeTiltListeners = () => {
+          root.removeEventListener('pointermove', onMove);
+          root.removeEventListener('pointerleave', onLeave);
+        };
+      }, root);
+    })();
+
+    return () => {
+      disposed = true;
+      removeTiltListeners?.();
+      ctx?.revert();
+    };
+  }, []);
+
+  return (
+    <div
+      ref={rootRef}
+      className="bg-[var(--foreground)] text-black p-6 rounded-lg will-change-transform [transform-style:preserve-3d]"
+    >
+      <div className="card card-compact bg-base-100 w-full shadow-xl">
+        <figure>
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={400}
+            height={250}
+            className="object-cover h-[250px] w-full rounded-t-lg"
+            priority={imagePriority}
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{project.title}</h2>
+          <p className="text-left">{project.description}</p>
+          <div className="card-actions justify-end">
+            <a
+              href={project.link}
+              className="btn btn-primary bg-[#0b80a1] border-none hover:bg-gray-100 transition duration-200 ease-in-out text-center"
+            >
+              Check It Out
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export const Projects = () => {
   return (
     <>
       <motion.div
@@ -46,32 +160,10 @@ export const Projects = () => {
           Projects
         </h2>
         <ul className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <motion.li
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className="bg-[var(--foreground)] text-black p-6 rounded-lg"
-            >
-              <div className="card card-compact bg-base-100 w-full shadow-xl">
-                <figure>
-                  <Image 
-                    src={project.image}
-                    alt="Project Card"
-                    width={400}
-                    height={250}
-                    className="object-cover h-[250px] w-full rounded-t-lg"
-                    priority
-                  />
-                </figure>
-                <div className="card-body">
-                  <h2 className="card-title">{project.title}</h2>
-                  <p className="text-left">{project.description}</p>
-                  <div className="card-actions justify-end">
-                    <a href={project.link} className='btn btn-primary bg-[#0b80a1] border-none hover:bg-gray-100 transition duration-200 ease-in-out text-center'>Check It Out</a>
-                  </div>
-                </div>
-              </div>
-            </motion.li>
+          {PROJECTS.map((project, index) => (
+            <li key={project.title}>
+              <ProjectCard project={project} imagePriority={index === 0} />
+            </li>
           ))}
         </ul>
       </motion.div>
@@ -80,12 +172,12 @@ export const Projects = () => {
         <div className="pt-[20px]">
           <a
             href="https://github.com/holdenprine/holdenprine-portfolio-v2"
-            className="px-3 py-2 rounded-md bg-gray-200 hover: bg-gray-300 transition duration-200 ease-in-out text-center"
+            className="px-3 py-2 rounded-md bg-gray-200 hover:bg-gray-300 transition duration-200 ease-in-out text-center"
           >
             Click Here
           </a>
         </div>
-      </div> 
+      </div>
     </>
   );
 };
