@@ -64,8 +64,10 @@ const WORD_SLIDE_X = 56;
 const WORD_STAGGER = 0.07;
 /** Doubled from initial 0.55s for a slower reveal. */
 const SECTION_ANIM_DURATION = 1.1;
-/** Fire once when the tech stack block scrolls into view (user reaches this section). */
+/** When top of block crosses this point while scrolling, enter “in view”. */
 const TECH_STACK_SCROLL_START = 'top 80%';
+/** When bottom of block clears the top of the viewport (scrolled past downward). Defines leave + re-enter zone with `start`. */
+const TECH_STACK_SCROLL_END = 'bottom top';
 
 function TechStackRow({ name, icon }: { name: string; icon: string }) {
   const IconComponent = iconMap[icon];
@@ -177,7 +179,8 @@ const NewTechStack: React.FC = () => {
           scrollTrigger: {
             trigger: root,
             start: TECH_STACK_SCROLL_START,
-            toggleActions: 'play none none none',
+            end: TECH_STACK_SCROLL_END,
+            toggleActions: 'play reset play reset',
           },
         });
       }, root);
@@ -203,7 +206,11 @@ const NewTechStack: React.FC = () => {
             <h3 className="text-xl font-medium">{title}</h3>
             <div className="flex flex-wrap items-center gap-4">
               {icons.map((item) => (
-                <TechStackRow key={item.name} name={item.name} icon={item.icon} />
+                <TechStackRow
+                  key={item.name}
+                  name={item.name}
+                  icon={item.icon}
+                />
               ))}
             </div>
           </div>
