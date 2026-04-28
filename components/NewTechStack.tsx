@@ -133,11 +133,10 @@ const NewTechStack: React.FC = () => (
       ].map(({ title, icons }) => (
         <div
           key={title}
-          className="collapse bg-gray-200 p-4 rounded-lg shadow-md"
+          className="bg-gray-200 p-4 rounded-lg shadow-md space-y-4"
         >
-          <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium">{title}</div>
-          <div className="collapse-content">{renderIcons(icons)}</div>
+          <h3 className="text-xl font-medium">{title}</h3>
+          {renderIcons(icons)}
         </div>
       ))}
     </div>
