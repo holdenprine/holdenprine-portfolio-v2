@@ -21,13 +21,13 @@ const PROJECTS: Project[] = [
       'A single page, interactive webapp built to promote content and music for the artist Halo Boy.',
     image: '/static/GearWatchTemp.jpeg',
   },
-  {
-    title: 'Feel Safe Website',
-    link: 'https://www.fightingfitnessinstitute.com/',
-    description:
-      'Built site on No-Code platform with some vanilla Javascript, HTML and CSS.',
-    image: '/static/Title.jpeg',
-  },
+  // {
+  //   title: 'Feel Safe Website',
+  //   link: 'https://www.fightingfitnessinstitute.com/',
+  //   description:
+  //     'Built site on No-Code platform with some vanilla Javascript, HTML and CSS. Built project no longer live.',
+  //   image: '/static/Title.jpeg',
+  // },
   {
     title: 'Victorise MTB Site',
     link: 'https://www.mtbfantasyleague.com/#/home',
