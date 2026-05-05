@@ -3,11 +3,17 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 export const ContactForm = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
   const [status, setStatus] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -17,7 +23,7 @@ export const ContactForm = () => {
     setStatus(null);
 
     const formDataObj = new FormData(e.currentTarget);
-    
+
     try {
       const response = await fetch('https://formspree.io/f/xrbenywj', {
         method: 'POST',
@@ -100,16 +106,16 @@ export const ContactForm = () => {
 
         <div className="mt-6">
           <div className="bg-gray-400 p-4 rounded-xl shadow-md inline-block px-4 py-2">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`text-[var(--text-color)] px-4 py-2 rounded-lg hover:bg-[var(--button-hover)] ${
-            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-        >
-          {isSubmitting ? 'Sending...' : 'Send'}
-        </button>
-        </div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`text-[var(--text-color)] px-4 py-2 rounded-lg hover:bg-[var(--button-hover)] ${
+                isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {isSubmitting ? 'Sending...' : 'Send'}
+            </button>
+          </div>
         </div>
       </motion.form>
 
